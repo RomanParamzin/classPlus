@@ -20,6 +20,8 @@ const desiredBroard = [
   ["lava", "lava", "lava"]
 ];
 
+const myJourney = [[0, 0], [0, 1], [1, 1], [1, 2], [2, 2]];
+
 // консоль-логи
 myTerrainList.forEach((field) => {
   let terrain = myHelper.letterToTerrain(field);
@@ -32,4 +34,10 @@ for (let i = 0; i < myTerrainList.length; i += boardSize) {
   result.push(temp);
 }
 
-console.log(result);
+console.log('result:', result);
+
+let x = myJourney.reduce((accum, el) => {
+  return accum + myHelper.scoreDifficulty(result[el[0]][el[1]]);
+}, 0);
+
+console.log(x);

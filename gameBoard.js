@@ -15,8 +15,12 @@ module.exports = class GameBoard {
     return result;
   }
 
-  difficultyOfJourney() {
+  difficultyOfJourney(journey) {
     // напишите этод метод сами
+    let result = journey.reduce((accum, el) => {
+      return accum + this.terrainHelper.scoreDifficulty(this.terrainMap()[el[0]][el[1]]);
+    }, 0);
+    return result;
   }
 }
 
